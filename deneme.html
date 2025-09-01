@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Benimle Çıkar mısın?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #ffe6f0;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #d63384;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .yes {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .no {
+      background-color: #dc3545;
+      color: white;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Benimle çıkar mısın? 💖</h1>
+  <button class="btn yes" onclick="cevapVer(true)">Evet 😍</button>
+  <button class="btn no" id="noButton">Hayır 🙄</button>
+
+  <script>
+    const noButton = document.getElementById('noButton');
+
+    function getRandomPosition() {
+      const maxX = window.innerWidth - noButton.offsetWidth;
+      const maxY = window.innerHeight - noButton.offsetHeight;
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+      return { x: randomX, y: randomY };
+    }
+
+    noButton.addEventListener('mouseenter', () => {
+      const pos = getRandomPosition();
+      noButton.style.left = `${pos.x}px`;
+      noButton.style.top = `${pos.y}px`;
+    });
+
+    function cevapVer(cevap) {
+      if (cevap) {
+        document.body.innerHTML = "<h1>Yaaa çok mutlu oldum! 💞</h1>";
+      }
+    }
+  </script>
+
+</body>
+</html>
